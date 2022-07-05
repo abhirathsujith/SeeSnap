@@ -19,10 +19,10 @@ struct Snap: Identifiable {
     Snap(title: "A", rating: 5, imgString: "1"),
     Snap(title: "B", rating: 5, imgString: "2"),
     Snap(title: "C", rating: 5, imgString: "3"),
-    Snap(title: "D", rating: 5, imgString: "4"),
+    Snap(title: "D", rating: 4, imgString: "4"),
     Snap(title: "E", rating: 5, imgString: "5"),
     Snap(title: "F", rating: 5, imgString: "6"),
-    Snap(title: "H", rating: 5, imgString: "7"),
+    Snap(title: "H", rating: 4, imgString: "7"),
     Snap(title: "I", rating: 5, imgString: "8"),
     Snap(title: "L", rating: 5, imgString: "9"),
     Snap(title: "K", rating: 5, imgString: "10"),
@@ -79,8 +79,8 @@ struct ContentView: View {
     func snapsCarousel(reader: GeometryProxy) -> some View {
         let screenSize = reader.size
         let itemWidth: CGFloat = screenSize.width * 0.8
-        let paddingX: CGFloat = (screenSize.width - itemWidth) / 2
-        let spacing: CGFloat = 10
+        let paddingX: CGFloat = (screenSize.width - itemWidth) / 1.5
+        let spacing: CGFloat = 15
         return  ScrollView(.horizontal) {
             HStack(spacing: 0){
                 

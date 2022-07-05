@@ -20,14 +20,14 @@ struct SnapItem: View {
             
             let midX = reader.frame(in: .global).midX
             let distance = abs(screenSize.width / 2 - midX )
-            let damping: CGFloat = 2
-            let percentage = abs(distance / (screenSize.width / 2) / damping - 1 )
+            let damping: CGFloat = 1
+            let percentage = abs(distance / (screenSize.width / 1.5) / damping - 1 )
             VStack {
                 Image(snap.imgString)
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenSize.width, height: screenSize.height)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
                     .shadow(color: .black.opacity(0.6), radius: 14, y: 10)
                 
                 Text(snap.title)
@@ -50,7 +50,7 @@ struct SnapItem: View {
            
             
         }
-        .frame(width: width)
+        .frame(width: width )
         .frame(maxHeight: .infinity)
        
     }
