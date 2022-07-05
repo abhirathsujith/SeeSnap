@@ -16,6 +16,7 @@
 		5A8AFCE42873E01400A863C8 /* SeeSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8AFCE32873E01400A863C8 /* SeeSnapTests.swift */; };
 		5A8AFCEE2873E01400A863C8 /* SeeSnapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8AFCED2873E01400A863C8 /* SeeSnapUITests.swift */; };
 		5A8AFCF02873E01400A863C8 /* SeeSnapUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8AFCEF2873E01400A863C8 /* SeeSnapUITestsLaunchTests.swift */; };
+		5A8AFCFD2873F5E900A863C8 /* SnapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8AFCFC2873F5E900A863C8 /* SnapItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		5A8AFCE92873E01400A863C8 /* SeeSnapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeeSnapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8AFCED2873E01400A863C8 /* SeeSnapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeSnapUITests.swift; sourceTree = "<group>"; };
 		5A8AFCEF2873E01400A863C8 /* SeeSnapUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeSnapUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5A8AFCFC2873F5E900A863C8 /* SnapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				5A8AFCCD2873E01000A863C8 /* SeeSnapApp.swift */,
 				5A8AFCCF2873E01000A863C8 /* ContentView.swift */,
+				5A8AFCFC2873F5E900A863C8 /* SnapItem.swift */,
 				5A8AFCD12873E01300A863C8 /* Assets.xcassets */,
 				5A8AFCD62873E01300A863C8 /* Persistence.swift */,
 				5A8AFCD82873E01300A863C8 /* SeeSnap.xcdatamodeld */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8AFCFD2873F5E900A863C8 /* SnapItem.swift in Sources */,
 				5A8AFCD72873E01300A863C8 /* Persistence.swift in Sources */,
 				5A8AFCD02873E01000A863C8 /* ContentView.swift in Sources */,
 				5A8AFCCE2873E01000A863C8 /* SeeSnapApp.swift in Sources */,
