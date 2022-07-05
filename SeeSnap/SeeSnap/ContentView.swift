@@ -33,24 +33,83 @@ struct ContentView: View {
     
     let snaps = Snap.photos
     
+    @State private var offsetX: CGFloat = 0
+    @State private var maxOffsetX: CGFloat = -1
+    
     var body: some View {
         GeometryReader { reader in
             let screenSize = reader.size
             ZStack {
-                let itemWidth: CGFloat = screenSize.width * 0.8
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(snaps) { snap in
-                            SnapItem(snap: snap, screenSize: screenSize, width: itemWidth)
-                         
+                backgroundCarousel(screenSize: screenSize)
+                snapsCarousel(reader: reader)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+          
+        }
+    }
+    
+    func backgroundCarousel(screenSize: CGSize) -> some View {
+        let bgWidth: CGFloat = screenSize.width * CGFloat(snaps.count)
+        let scrollPercentage = offsetX / maxOffsetX
+        let clampedPercentage: CGFloat = 1 - max(0, min(scrollPercentage, 1))
+        let posX: CGFloat = (bgWidth - screenSize.width) * clampedPercentage
+        
+        return HStack(spacing: 0){
+            ForEach(snaps.reversed()) { snap in
+                Image(snap.bgString ?? snap.imgString)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: screenSize.width)
+                    .frame(maxHeight: .infinity)
+                    .blur(radius: 1)
+                    .scaleEffect(1)
+                    .clipped()
+                    .overlay(Color.black.opacity(0.7))
+                    .ignoresSafeArea()
+                
+            }
+        }
+        
+        .frame(width: bgWidth)
+        .position(x: bgWidth / 2 - posX, y: screenSize.height / 2)
+        
+        
+    }
+    
+    func snapsCarousel(reader: GeometryProxy) -> some View {
+        let screenSize = reader.size
+        let itemWidth: CGFloat = screenSize.width * 0.8
+        let paddingX: CGFloat = (screenSize.width - itemWidth) / 2
+        let spacing: CGFloat = 12
+        return  ScrollView(.horizontal) {
+            HStack(spacing: 0){
+                
+                GeometryReader { geo -> Color in
+                    DispatchQueue.main.async {
+                        offsetX = (geo.frame(in: .global).minX - paddingX) * -1
+                        let scrollContentWidth = itemWidth * CGFloat(snaps.count) + spacing * CGFloat(snaps.count - 1)
+                        let maxOffsetX = scrollContentWidth + 2 * paddingX - screenSize.width
+                        if self.maxOffsetX == -1 {
+                            self.maxOffsetX = maxOffsetX
                         }
+                      //  print(offsetX / maxOffsetX )
+                    }
+                    return Color.clear
+                }
+                
+                
+                HStack(spacing: spacing){
+                    ForEach(snaps) { snap in
+                        SnapItem(snap: snap, screenSize: screenSize, width: itemWidth)
                     }
                 }
                 
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.cyan)
+            
+            .padding(.horizontal, paddingX)
+            
         }
+        
     }
 }
    
