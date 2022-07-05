@@ -61,7 +61,7 @@ struct ContentView: View {
                     .scaledToFill()
                     .frame(width: screenSize.width)
                     .frame(maxHeight: .infinity)
-                    .blur(radius: 1)
+                    .blur(radius: 1.005)
                     .scaleEffect(1)
                     .clipped()
                     .overlay(Color.black.opacity(0.7))
@@ -80,7 +80,7 @@ struct ContentView: View {
         let screenSize = reader.size
         let itemWidth: CGFloat = screenSize.width * 0.8
         let paddingX: CGFloat = (screenSize.width - itemWidth) / 2
-        let spacing: CGFloat = 12
+        let spacing: CGFloat = 10
         return  ScrollView(.horizontal) {
             HStack(spacing: 0){
                 

@@ -22,18 +22,17 @@ struct SnapItem: View {
             let distance = abs(screenSize.width / 2 - midX )
             let damping: CGFloat = 2
             let percentage = abs(distance / (screenSize.width / 2) / damping - 1 )
-            
-            
             VStack {
                 Image(snap.imgString)
                     .resizable()
                     .scaledToFit()
                     .frame(width: screenSize.width, height: screenSize.height)
-                    .shadow(color: .black.opacity(0.6), radius: 14, x: 1, y: 10)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .shadow(color: .black.opacity(0.6), radius: 14, y: 10)
                 
                 Text(snap.title)
-                    .font(.system(size: 30, weight: .bold))
-                    .foregroundColor(.orange)
+                    .font(.system(size: 28, weight: .bold))
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(.top, 20)
                     .padding(.bottom, 10)
@@ -41,7 +40,7 @@ struct SnapItem: View {
                 HStack(spacing: 5){
                     ForEach(1..<6) { i in
                         Image(systemName: i <= snap.rating ? "star.fill" : "star")
-                            .font(.system(size: 25))
+                            .font(.system(size: 20))
                             .foregroundColor(.yellow)
                     }
                 }
